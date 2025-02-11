@@ -65,7 +65,7 @@
   background-color: #A0A0A0;
   border: 1px solid var(--border-color);
   overflow: auto;
-  text-align: center;
+  text-align: center;  
 }
 
 #svgcanvas {
@@ -312,7 +312,15 @@ hr {
   flex-wrap: wrap;
   align-items: flex-start;
   background-color: var(--main-bg-color);
+  max-height:80px;
+  overflow: auto;
 }
+
+#tools_top select {
+  width:100px;
+}
+
+
 
 #tools_top>* {
   display: flex;
@@ -628,4 +636,273 @@ ul li.current {
 
 .dropdown li.tool_button {
   width: 24px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+ text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+/* Fonts for Print Badge Starts */
+@font-face {
+	font-family: 'Myriad';
+	src:url('../../../../resources/shared/fonts/Myriad Pro Regular.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/Myriad Pro Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../../../resources/shared/fonts/Myriad Pro Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/Myriad Pro Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../../../../resources/shared/fonts/Myriad Pro Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../../../../resources/shared/fonts/Myriad Pro Regular.svg#svgFontName') format('svg'); /* Legacy iOS */;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Myriad Semi-Bold';
+	src:url('../../../../resources/shared/fonts/Myriad Pro Semibold.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/Myriad Pro Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../../../resources/shared/fonts/Myriad Pro Semibold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/Myriad Pro Semibold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../../../../resources/shared/fonts/Myriad Pro Semibold.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../../../../resources/shared/fonts/Myriad Pro Semibold.svg#svgFontName') format('svg'); /* Legacy iOS */;;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkjet';
+	src:url('../../../../resources/shared/fonts/inkjet-regular.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/inkjet-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../../../resources/shared/fonts/inkjet-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/inkjet-regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../../../../resources/shared/fonts/inkjet-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../../../../resources/shared/fonts/inkjet-regular.svg#svgFontName') format('svg');;
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Connections Light Regular";
+  src:url('../../../../resources/shared/fonts/ConnectionsLightRegular.eot'), /* IE9 Compat Modes */
+  url('../../../../resources/shared/fonts/ConnectionsLightRegular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../../../resources/shared/fonts/ConnectionsLightRegular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../../../../resources/shared/fonts/ConnectionsLightRegular.woff') format('woff'), /* Pretty Modern Browsers */
+  url('../../../../resources/shared/fonts/ConnectionsLightRegular.ttf')  format('truetype'), /* Safari, Android, iOS */
+  url('../../../../resources/shared/fonts/ConnectionsLightRegular.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'TT Norms Regular';
+	src:url('../../../../resources/shared/fonts/ttnorms-regular-webfont.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/ttnorms-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../../../resources/shared/fonts/ttnorms-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/ttnorms-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../../../../resources/shared/fonts/ttnorms-regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../../../../resources/shared/fonts/ttnorms-regular-webfont.svg#TT Norms  Regular') format('svg'); /* Legacy iOS */;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TT Norms Bold';
+	src:url('../../../../resources/shared/fonts/ttnorms-bold-webfont.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/ttnorms-bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../../../resources/shared/fonts/ttnorms-bold-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/ttnorms-bold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../../../../resources/shared/fonts/ttnorms-bold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../../../../resources/shared/fonts/ttnorms-bold-webfont.svg#TT Norms Bold') format('svg'); /* Legacy iOS */;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sans Bold';
+	src:url('../../../../resources/shared/fonts/SRPSans-Bold.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/SRPSans-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/SRPSans-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sans Bold Italic';
+	src:url('../../../../resources/shared/fonts/SRPSans-BoldItalic.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/SRPSans-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/SRPSans-BoldItalic.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sans Extra Bold';
+	src:url('../../../../resources/shared/fonts/SRPSans-ExtraBold.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/SRPSans-ExtraBold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/SRPSans-ExtraBold.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sans Medium';
+	src:url('../../../../resources/shared/fonts/SRPSans-Medium.eot'), /* IE9 Compat Modes */
+    url('../../../../resources/shared/fonts/SRPSans-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../resources/shared/fonts/SRPSans-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Effra Heavy';
+	src:url('../../../../resources/shared/fonts/Effra_Std_He.ttf')format('truetype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Prevost Italic';
+	src:url('../../../../resources/shared/fonts/Prevost-Italic.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Prevost HeadlineItalic';
+	src:url('../../../../resources/shared/fonts/Prevost-HeadlineItalic.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Prevost Headline';
+	src:url('../../../../resources/shared/fonts/Prevost-Headline.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Prevost BoldItalic';
+	src:url('../../../../resources/shared/fonts/Prevost-BoldItalic.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Prevost Bold';
+	src:url('../../../../resources/shared/fonts/Prevost-Bold.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Prevost Regular';
+	src:url('../../../../resources/shared/fonts/Prevost-Regular.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'PrevostPPT Roman';
+	src:url('../../../../resources/shared/fonts/PrevostPPT-Roman.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'PrevostPPT Italic';
+	src:url('../../../../resources/shared/fonts/PrevostPPT-Italic.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'PrevostPPT BoldItalic';
+	src:url('../../../../resources/shared/fonts/PrevostPPT-BoldItalic.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'PrevostPPT Bold';
+	src:url('../../../../resources/shared/fonts/PrevostPPT-Bold.otf')format('opentype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Volvo Novum Light';
+	src:url('../../../../resources/shared/fonts/VolvoNovumLight.ttf')format('truetype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Volvo Novum Medium';
+	src:url('../../../../resources/shared/fonts/VolvoNovumMedium.ttf')format('truetype') /* Safari, Android, iOS */;
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+  font-family: "Toyotatype Black";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-black-webfont/toyotatype-black-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: "Toyotatype Bold";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-bold-webfont/toyotatype-bold-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: "Toyotatype Book";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-book-webfont/toyotatype-book-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}     
+@font-face {
+  font-family: "Toyotatype Light";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-light-webfont/toyotatype-light-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: "Toyotatype Regular";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-regular-webfont/toyotatype-regular-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+  font-family: "Toyotatype SemiBold";
+  src:url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.eot'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.woff2') format('woff2'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.woff') format('woff'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.ttf')  format('truetype'), 
+  url('../../../../resources/shared/fonts/toyota/toyotatype-semibold-webfont/toyotatype-semibold-webfont.svg#svgFontName') format('svg');;
+font-weight: normal;
+font-style: normal;
 }

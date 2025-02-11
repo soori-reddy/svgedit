@@ -125,7 +125,7 @@ export class ExplorerButton extends HTMLElement {
       background: none !important;
     }
     </style>
-  
+
     <div class="overall">
       <div class="menu-button">
         <img class="button-icon" src="explorer.svg" alt="icon">
@@ -162,7 +162,7 @@ export class ExplorerButton extends HTMLElement {
       case 'title':
         {
           const shortcut = this.getAttribute('shortcut')
-          this.$button.setAttribute('title', `${newValue} [${shortcut}]`)
+          this.$button.setAttribute('title', `${newValue}`)
         }
         break
       case 'pressed':

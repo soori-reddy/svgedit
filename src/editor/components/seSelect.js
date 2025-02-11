@@ -8,6 +8,7 @@ select {
   appearance: none;
   outline: none;
   padding: 3px;
+  width:100px;
 }
 label {
   margin-left: 2px;

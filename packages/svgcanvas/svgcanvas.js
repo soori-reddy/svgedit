@@ -852,7 +852,7 @@ class SvgCanvas {
     // create new document
     this.current_drawing_ = new draw.Drawing(this.svgContent)
     // create empty first layer
-    this.createLayer()
+    // this.createLayer('Layer 1')
     // clear the undo stack
     this.undoMgr.resetUndoStack()
     // reset the selector manager
@@ -1291,7 +1291,6 @@ class SvgCanvas {
     this.hasMatrixTransform = hasMatrixTransform
     this.transformListToTransform = transformListToTransform
     this.convertToNum = convertToNum
-    this.convertUnit = convertUnit
     this.findDefs = findDefs
     this.getUrlFromAttr = getUrlFromAttr
     this.getHref = getHref

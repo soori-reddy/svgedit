@@ -256,14 +256,6 @@ class LayersPanel {
       layerTr.className = (name === currentLayerName) ? 'layer layersel' : 'layer'
       const layerVis = document.createElement('td')
       layerVis.className = (!drawing.getLayerVisibility(name)) ? 'layerinvis layervis' : 'layervis'
-
-      // fix the eye icon lost at right layers
-      const _eye = document.createElement('img')
-      _eye.src = './images/eye.svg'
-      _eye.style.width = '14px'
-      _eye.style.width = '14px'
-      layerVis.appendChild(_eye)
-
       const layerName = document.createElement('td')
       layerName.className = 'layername'
       layerName.textContent = name
@@ -285,10 +277,6 @@ class LayersPanel {
         })
         evt.currentTarget.parentNode.classList.add('layersel')
         self.editor.svgCanvas.setCurrentLayer(evt.currentTarget.textContent)
-        // run extension when different layer is selected from listener
-        self.editor.svgCanvas.runExtensions(
-          'layersChanged'
-        )
         evt.preventDefault()
       })
       element.addEventListener('mouseup', (evt) => {
@@ -306,10 +294,6 @@ class LayersPanel {
         const vis = evt.currentTarget.classList.contains('layerinvis')
         self.editor.svgCanvas.setLayerVisibility(name, vis)
         evt.currentTarget.classList.toggle('layerinvis')
-        // run extension if layer visibility is changed from listener
-        self.editor.svgCanvas.runExtensions(
-          'layerVisChanged'
-        )
       })
     })
 
@@ -321,10 +305,6 @@ class LayersPanel {
       tlayer.innerHTML = '<td style="color:white">_</td><td/>'
       layerlist.append(tlayer)
     }
-    // run extension when layer panel is populated
-    self.editor.svgCanvas.runExtensions(
-      'layersChanged'
-    )
   }
 }
 

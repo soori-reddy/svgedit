@@ -165,7 +165,6 @@ export default {
           size: blob.size,
           type: blob.type
         })
-        svgEditor.layersPanel.populateLayers()
       } catch (err) {
         if (err.name !== 'AbortError') {
           return console.error(err)
@@ -251,14 +250,14 @@ export default {
         const buttonTemplate = `
         <se-menu-item id="tool_clear" label="opensave.new_doc" shortcut="N" src="new.svg"></se-menu-item>`
         svgCanvas.insertChildAtIndex($id('main_button'), buttonTemplate, 0)
-        const openButtonTemplate = '<se-menu-item id="tool_open" label="opensave.open_image_doc" src="open.svg"></se-menu-item>'
-        svgCanvas.insertChildAtIndex($id('main_button'), openButtonTemplate, 1)
+        // const openButtonTemplate = '<se-menu-item id="tool_open" label="opensave.open_image_doc" src="open.svg"></se-menu-item>'
+        // svgCanvas.insertChildAtIndex($id('main_button'), openButtonTemplate, 1)
         const saveButtonTemplate = '<se-menu-item id="tool_save" label="opensave.save_doc" shortcut="S" src="saveImg.svg"></se-menu-item>'
         svgCanvas.insertChildAtIndex($id('main_button'), saveButtonTemplate, 2)
         const saveAsButtonTemplate = '<se-menu-item id="tool_save_as" label="opensave.save_as_doc" src="saveImg.svg"></se-menu-item>'
         svgCanvas.insertChildAtIndex($id('main_button'), saveAsButtonTemplate, 3)
-        const importButtonTemplate = '<se-menu-item id="tool_import" label="tools.import_doc" src="importImg.svg"></se-menu-item>'
-        svgCanvas.insertChildAtIndex($id('main_button'), importButtonTemplate, 4)
+        // const importButtonTemplate = '<se-menu-item id="tool_import" label="tools.import_doc" src="importImg.svg"></se-menu-item>'
+        // svgCanvas.insertChildAtIndex($id('main_button'), importButtonTemplate, 4)
 
         // handler
         $click($id('tool_clear'), clickClear.bind(this))
@@ -266,7 +265,7 @@ export default {
         $click($id('tool_save'), clickSave.bind(this, 'save'))
         $click($id('tool_save_as'), clickSave.bind(this, 'saveas'))
         // tool_import pressed with shiftKey will not scale the SVG
-        $click($id('tool_import'), (ev) => { imgImport.shiftKey = ev.shiftKey; imgImport.click() })
+        // $click($id('tool_import'), (ev) => { imgImport.shiftKey = ev.shiftKey; imgImport.click() })
       }
     }
   }

@@ -87,6 +87,11 @@ class EditorStartup {
       newSeEditPrefsDialog.setAttribute('id', 'se-edit-prefs')
       this.$container.append(newSeEditPrefsDialog)
       newSeEditPrefsDialog.init(this.i18next)
+      // editor prefences dialoag added to DOM
+      const newSeVisibilityRulesDialog = document.createElement('se-visibility-rules-dialog')
+      newSeVisibilityRulesDialog.setAttribute('id', 'se-visibility-rules-dialog')
+      this.$container.append(newSeVisibilityRulesDialog)
+      newSeVisibilityRulesDialog.init(this.i18next)
       // canvas menu added to DOM
       const dialogBox = document.createElement('se-cmenu_canvas-dialog')
       dialogBox.setAttribute('id', 'se-cmenu_canvas')
@@ -216,7 +221,7 @@ class EditorStartup {
       res.h = convertUnit(res.h) + this.configObj.curConfig.baseUnit
     }
     $id('se-img-prop').setAttribute('dialog', 'close')
-    $id('se-img-prop').setAttribute('title', this.svgCanvas.getDocumentTitle())
+    // $id('se-img-prop').setAttribute('title', this.svgCanvas.getDocumentTitle())
     $id('se-img-prop').setAttribute('width', res.w)
     $id('se-img-prop').setAttribute('height', res.h)
     $id('se-img-prop').setAttribute('save', this.configObj.pref('img_save'))
@@ -495,6 +500,17 @@ class EditorStartup {
         this.saveSourceEditor(e)
       }
     }.bind(this))
+    $id('se-visibility-rules-dialog').addEventListener('change', function (e) {
+      if (e?.detail?.copy === 'click') {
+        this.cancelVisibilityDialogOverlays(e)
+      } else if (e?.detail?.dialog === 'dynamic') {
+        this.toggleVisibilityDynamicOutput(e)
+      } else if (e?.detail?.dialog === 'closed') {
+        this.hideVisibilityDialog()
+      } else {
+        this.saveVisibilityDialog(e)
+      }
+    }.bind(this))
     $id('se-cmenu_canvas').addEventListener('change', function (e) {
       const action = e?.detail?.trigger
       switch (action) {
@@ -546,6 +562,7 @@ class EditorStartup {
       const regTool = $id(this.configObj.curConfig.initTool)
       const selectTool = $id('tool_select')
       const $editDialog = $id('se-edit-prefs')
+      const $visibilityRulesDialog = $id('se-visibility-rules-dialog')
 
       if (preTool) {
         preTool.click()
@@ -767,6 +784,10 @@ class EditorStartup {
         // #TODO: Cursor should be changed back to default after text element was created
         cs = 'text'
         break
+      case 'identitytext':
+          // #TODO: Cursor should be changed back to default after text element was created
+          cs = 'auto'
+          break
       default:
         cs = 'auto'
     }
@@ -780,7 +801,7 @@ class EditorStartup {
   cancelTool () {
     const mode = this.svgCanvas.getMode()
     // list of modes that are currently save to cancel
-    const modesToCancel = ['zoom', 'rect', 'square', 'circle', 'ellipse', 'line', 'text', 'star', 'polygon', 'shapelib', 'image']
+    const modesToCancel = ['zoom', 'rect', 'square', 'circle', 'ellipse', 'line', 'text', 'identitytext',  'dynamicphoto', 'star', 'polygon', 'shapelib', 'imageimport']
     if (modesToCancel.includes(mode)) {
       this.leftPanel.clickSelect()
     }

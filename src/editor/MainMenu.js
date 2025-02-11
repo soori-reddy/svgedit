@@ -17,7 +17,7 @@ class MainMenu {
     /**
      * @type {Integer}
      */
-    this.editor.exportWindowCt = 0
+    this.exportWindowCt = 0
   }
 
   /**
@@ -41,6 +41,7 @@ class MainMenu {
     this.editor.configObj.preferences = false
   }
 
+
   /**
    * @param {Event} e
    * @returns {boolean} Whether there were problems saving the document properties
@@ -49,7 +50,7 @@ class MainMenu {
     // set title
     const { title, w, h, save } = e.detail
     // set document title
-    this.editor.svgCanvas.setDocumentTitle(title)
+    // this.editor.svgCanvas.setDocumentTitle(title)
 
     if (w !== 'fit' && !isValidUnit('width', w)) {
       seAlert(this.editor.i18next.t('notification.invalidAttrValGiven'))
@@ -228,9 +229,8 @@ class MainMenu {
     template.innerHTML = `
     <se-menu id="main_button" label="SVG-Edit" src="logo.svg" alt="logo">
         <se-menu-item id="tool_export" label="tools.export_img" src="export.svg"></se-menu-item>
-        <se-menu-item id="tool_docprops" label="tools.docprops" shortcut="shift+D" src="docprop.svg"></se-menu-item>
+        <se-menu-item id="tool_docprops" label="tools.docprops" shortcut="D" src="docprop.svg"></se-menu-item>
         <se-menu-item id="tool_editor_prefs" label="config.editor_prefs" src="editPref.svg"></se-menu-item>
-        <se-menu-item id="tool_editor_homepage" label="tools.editor_homepage" src="logo.svg"></se-menu-item>
     </se-menu>`
     this.editor.$svgEditor.append(template.content.cloneNode(true))
 
@@ -255,10 +255,10 @@ class MainMenu {
       'click',
       this.showPreferences.bind(this)
     )
-    $id('tool_editor_homepage').addEventListener(
-      'click',
-      this.openHomePage.bind(this)
-    )
+    // $id('tool_editor_homepage').addEventListener(
+    //   'click',
+    //   this.openHomePage.bind(this)
+    // )
     $id('se-img-prop').addEventListener(
       'change',
       function (e) {

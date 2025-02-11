@@ -570,7 +570,6 @@ const mouseOutEvent = () => {
 * @returns {void}
 */
 const mouseUpEvent = (evt) => {
-  evt.preventDefault()
   moveSelectionThresholdReached = false
   if (evt.button === 2) { return }
   if (!svgCanvas.getStarted()) { return }
@@ -1253,7 +1252,7 @@ const mouseDownEvent = (evt) => {
       break
     case 'text':
       svgCanvas.setStarted(true)
-      /* const newText = */ svgCanvas.addSVGElementsFromJson({
+      svgCanvas.addSVGElementsFromJson({
         element: 'text',
         curStyles: true,
         attr: {
@@ -1269,7 +1268,30 @@ const mouseDownEvent = (evt) => {
           opacity: curShape.opacity
         }
       })
-      // newText.textContent = 'text';
+      break
+    case 'identitytext':
+      svgCanvas.setStarted(true)
+      break
+    case 'identityassettext':
+      svgCanvas.setStarted(true)
+      break
+    case 'assettext':
+      svgCanvas.setStarted(true)
+      break
+    case 'visittext':
+      svgCanvas.setStarted(true)
+      break
+    case 'visitortext':
+      svgCanvas.setStarted(true)
+      break
+    case 'visitorsvisittext':
+      svgCanvas.setStarted(true)
+      break
+    case 'dynamicphoto':
+      svgCanvas.setStarted(true)
+      break
+    case 'imageimport':
+      svgCanvas.setStarted(true)
       break
     case 'path':
     // Fall through

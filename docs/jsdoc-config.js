@@ -12,8 +12,7 @@ module.exports = {
       'dist',
       'external',
       'screencasts',
-      'test',
-      'src/editor/react-extensions/react-test/node_modules'
+      'test'
     ],
     excludePattern: 'svgedit-config-*|build-html.js|rollup*|external/babel-polyfill|extensions/mathjax|imagelib/jquery.min.js|jspdf/jspdf.min.js|jspdf/underscore-min.js|jquery-ui|jquery.min.js|js-hotkeys'
   },

@@ -112,44 +112,44 @@ export default {
 
     storageBox.addEventListener('change', e => {
       storageBox.setAttribute('dialog', 'close')
-      if (e?.detail?.trigger === 'ok') {
-        if (e?.detail?.select !== 'noPrefsOrContent') {
-          const storagePrompt = new URL(top.location).searchParams.get(
-            'storagePrompt'
-          )
-          document.cookie =
-            'svgeditstore=' +
-            encodeURIComponent(e.detail.select) +
-            '; expires=Fri, 31 Dec 9999 23:59:59 GMT'
-          if (storagePrompt === 'true' && e?.detail?.checkbox) {
-            replaceStoragePrompt()
-            return
-          }
-        } else {
-          removeStoragePrefCookie()
-          if (
-            svgEditor.configObj.curConfig.emptyStorageOnDecline &&
-            e?.detail?.checkbox
-          ) {
-            setSvgContentStorage('')
-            Object.keys(svgEditor.curPrefs).forEach(name => {
-              name = 'svg-edit-' + name
-              if (svgEditor.storage) {
-                svgEditor.storage.removeItem(name)
-              }
-              expireCookie(name)
-            })
-          }
-          if (e?.detail?.select && e?.detail?.checkbox) {
-            replaceStoragePrompt('false')
-            return
-          }
-        }
-      } else if (e?.detail?.trigger === 'cancel') {
-        removeStoragePrefCookie()
-      }
-      setupBeforeUnloadListener()
-      svgEditor.storagePromptState = 'closed'
+      // if (e?.detail?.trigger === 'ok') {
+      //   if (e?.detail?.select !== 'noPrefsOrContent') {
+      //     const storagePrompt = new URL(top.location).searchParams.get(
+      //       'storagePrompt'
+      //     )
+      //     document.cookie =
+      //       'svgeditstore=' +
+      //       encodeURIComponent(e.detail.select) +
+      //       '; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+      //     if (storagePrompt === 'true' && e?.detail?.checkbox) {
+      //       replaceStoragePrompt()
+      //       return
+      //     }
+      //   } else {
+      //     removeStoragePrefCookie()
+      //     if (
+      //       svgEditor.configObj.curConfig.emptyStorageOnDecline &&
+      //       e?.detail?.checkbox
+      //     ) {
+      //       setSvgContentStorage('')
+      //       Object.keys(svgEditor.curPrefs).forEach(name => {
+      //         name = 'svg-edit-' + name
+      //         if (svgEditor.storage) {
+      //           svgEditor.storage.removeItem(name)
+      //         }
+      //         expireCookie(name)
+      //       })
+      //     }
+      //     if (e?.detail?.select && e?.detail?.checkbox) {
+      //       replaceStoragePrompt('false')
+      //       return
+      //     }
+      //   }
+      // } else if (e?.detail?.trigger === 'cancel') {
+      //   removeStoragePrefCookie()
+      // }
+      // setupBeforeUnloadListener()
+      // svgEditor.storagePromptState = 'closed'
       svgEditor.updateCanvas(true)
     })
 

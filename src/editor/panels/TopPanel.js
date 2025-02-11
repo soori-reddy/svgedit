@@ -17,7 +17,7 @@ class TopPanel {
    * @param {PlainObject} editor svgedit handler
    */
   constructor (editor) {
-    this.editor = editor
+    this.editor = editor;
   }
 
   /**
@@ -94,7 +94,7 @@ class TopPanel {
     let i
     let len
     // set title
-    $qa('#title_panel > p')[0].textContent = this.editor.title
+    // $qa('#title_panel > p')[0].textContent = this.editor.title
     if (this.selectedElement) {
       switch (this.selectedElement.tagName) {
         case 'use':
@@ -156,6 +156,7 @@ class TopPanel {
     }
 
     this.editor.bottomPanel.updateToolButtonState()
+    this.setBackgroundFit();
   }
 
   /**
@@ -211,7 +212,18 @@ class TopPanel {
     this.hideTool('use_panel')
     this.hideTool('a_panel')
     this.hideTool('xy_panel')
-    if (elem) {
+     if (this.multiselected) {
+      // Check if all selected elements are 'text' nodes, if yes enable text panel
+      const selElems = this.editor.svgCanvas.getSelectedElements()
+      if (selElems.every(elem => elem.tagName === 'text')) {
+        this.displayTool('text_panel')
+      }
+
+      this.displayTool('multiselected_panel')
+      menuItems.setAttribute('enablemenuitems', '#group')
+      menuItems.setAttribute('disablemenuitems', '#ungroup')
+    }
+    else if (elem) {
       const elname = elem.nodeName
 
       const angle = this.editor.svgCanvas.getRotationAngle(elem)
@@ -392,9 +404,19 @@ class TopPanel {
           $id('tool_word_spacing').value =
             elem.getAttribute('word-spacing') ?? 0
           $id('tool_text_length').value = elem.getAttribute('textLength') ?? 0
-          $id('tool_length_adjust').value =
-            elem.getAttribute('lengthAdjust') ?? 0
-          $id('text').value = elem.textContent
+          var classNames = elem.getAttribute('class')||"";
+						if(classNames.indexOf('uppercase') > -1){
+							$id('change_case').value = 'Uppercase';
+						}else if(classNames.indexOf('lowercase') > -1){
+							$id('change_case').value = 'Lowercase';
+						}else if(classNames.indexOf('capitalize') > -1){
+							$id('change_case').value = 'Capitalize';
+						}else{
+							$id('change_case').value = 'Choosecase';
+						}
+         
+          $id('text').value = elem.textContent;
+          $id('text').value = elem.textContent;
           if (this.editor.svgCanvas.addedNew) {
             // Timeout needed for IE9
             setTimeout(() => {
@@ -428,17 +450,7 @@ class TopPanel {
       )
 
       // if (elem)
-    } else if (this.multiselected) {
-      // Check if all selected elements are 'text' nodes, if yes enable text panel
-      const selElems = this.editor.svgCanvas.getSelectedElements()
-      if (selElems.every(elem => elem.tagName === 'text')) {
-        this.displayTool('text_panel')
-      }
-
-      this.displayTool('multiselected_panel')
-      menuItems.setAttribute('enablemenuitems', '#group')
-      menuItems.setAttribute('disablemenuitems', '#ungroup')
-    } else {
+    }  else {
       menuItems.setAttribute(
         'disablemenuitems',
         '#delete,#cut,#copy,#group,#ungroup,#move_front,#move_up,#move_down,#move_back'
@@ -484,6 +496,24 @@ class TopPanel {
     $editorDialog.setAttribute('copysec', Boolean(forSaving))
     $editorDialog.setAttribute('applysec', !forSaving)
   }
+
+    /**
+   * @param {Event} [e] Not used.
+   * @param {boolean} forSaving
+   * @returns {void}
+   */
+    showVisibilityRules (e, forSaving) {
+      const $editorDialog = document.getElementById('se-visibility-rules-dialog')
+      if ($editorDialog.getAttribute('dialog') === 'open') return
+      // const origSource = this.editor.svgCanvas.getSvgString()
+      $editorDialog.setAttribute('selectedElemID', this.editor.selectedElement.id)
+      $editorDialog.setAttribute('selectedElemTagName', this.editor.selectedElement.tagName)
+      $editorDialog.setAttribute('dialog', 'open')
+      // $editorDialog.setAttribute('value', origSource)
+      $editorDialog.setAttribute('copysec', Boolean(forSaving))
+      $editorDialog.setAttribute('applysec', !forSaving)
+      
+    }
 
   /**
    *
@@ -607,6 +637,7 @@ class TopPanel {
       value = 'selected'
     }
     this.editor.svgCanvas.alignSelectedElements(pos, value)
+    this.updateContextPanel();
   }
 
   /**
@@ -844,6 +875,11 @@ class TopPanel {
     this.editor.svgCanvas.setTextLength(e.target.value)
   }
 
+  textTransformFunc(e) {
+    var lowercase = e.target.value.toLocaleLowerCase();
+    this.editor.svgCanvas.selectedElements[0].setAttribute("class", lowercase);
+  }
+
   /**
    * @type {module}
    */
@@ -898,8 +934,8 @@ class TopPanel {
    */
   updateTitle (title) {
     if (title) this.editor.title = title
-    const titleElement = $qa('#title_panel > p')[0]
-    if (titleElement) titleElement.textContent = this.editor.title
+    // const titleElement = $qa('#title_panel > p')[0]
+    // if (titleElement) titleElement.textContent = this.editor.title
   }
 
   /**
@@ -929,6 +965,11 @@ class TopPanel {
     }
   }
 
+  setBackgroundFit (){
+    const $backgroundFit = document.getElementById('tool_fitcanvas')
+    $backgroundFit.shadowRoot.querySelector(".menu-button").click();  
+  }
+
   /**
    * @type {module}
    */
@@ -949,6 +990,7 @@ class TopPanel {
     $id('tool_link_url').setAttribute('title', i18next.t('tools.set_link_url'))
     // register action to top panel buttons
     $click($id('tool_source'), this.showSourceEditor.bind(this))
+    $click($id('tool_visibilityrule'), this.showVisibilityRules.bind(this))
     $click($id('tool_wireframe'), this.clickWireframe.bind(this))
     $click($id('tool_undo'), this.clickUndo.bind(this))
     $click($id('tool_redo'), this.clickRedo.bind(this))
@@ -1017,6 +1059,10 @@ class TopPanel {
     $id('tool_length_adjust').addEventListener('change', evt =>
       this.changeLengthAdjust.bind(this)(evt)
     )
+
+    $id('change_case').addEventListener('change', evt =>
+     this.textTransformFunc.bind(this)(evt)
+     )
     $click($id('tool_unlink_use'), this.clickGroup.bind(this))
     $id('image_url').addEventListener('change', evt => {
       this.setImageURL(evt.currentTarget.value)
@@ -1049,6 +1095,7 @@ class TopPanel {
       $id(attrId).addEventListener('change', this.attrChanger.bind(this))
     )
   }
+
 }
 
 export default TopPanel

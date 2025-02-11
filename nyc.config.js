@@ -7,8 +7,7 @@ module.exports = {
   extension: ['.js', '.html', '.json', '.css', '.svg', '.png', '.gif'],
   exclude: [
     'editor/jquery.min.js',
-    'editor/jgraduate/**',
-    'editor/react-extensions/react-test'
+    'editor/jgraduate/**'
   ],
   include: [
     'src/**',

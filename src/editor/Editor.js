@@ -1150,17 +1150,101 @@ class Editor extends EditorStartup {
     }
   }
 
-  /**
+    /**
    * @returns {void}
    */
-  toggleDynamicOutput (e) {
-    this.configObj.curConfig.dynamicOutput = e.detail.dynamic
-    this.svgCanvas.setConfig(this.configObj.curConfig)
-    const $editorDialog = document.getElementById('se-svg-editor-dialog')
-    const origSource = this.svgCanvas.getSvgString()
-    $editorDialog.setAttribute('dialog', 'open')
-    $editorDialog.setAttribute('value', origSource)
+    toggleDynamicOutput (e) {
+      this.configObj.curConfig.dynamicOutput = e.detail.dynamic
+      this.svgCanvas.setConfig(this.configObj.curConfig)
+      const $editorDialog = document.getElementById('se-svg-editor-dialog')
+      const origSource = this.svgCanvas.getSvgString()
+      $editorDialog.setAttribute('dialog', 'open')
+      $editorDialog.setAttribute('value', origSource)
+    }
+
+
+
+  /**
+   *
+   * @returns {void}
+   */
+  hideVisibilityDialog () {
+    const $editorDialog = $id('se-visibility-rules-dialog')
+    $editorDialog.setAttribute('dialog', 'closed')
   }
+
+  /**
+   * @param {Event} e
+   * @returns {void} Resolves to `undefined`
+   */
+  async saveVisibilityDialog (e) {
+    const $editorDialog = $id('se-visibility-rules-dialog')
+    if ($editorDialog.getAttribute('dialog') !== 'open') return
+    const saveChanges = () => {
+      this.svgCanvas.clearSelection()
+      this.hideVisibilityDialog()
+      this.zoomImage()
+      this.layersPanel.populateLayers()
+    }
+
+    if (!this.svgCanvas.setSvgString(e.detail.value)) {
+      const ok = await seConfirm(
+        this.i18next.t('notification.QerrorsRevertToSource')
+      )
+      if (ok === false || ok === 'Cancel') {
+        return
+      }
+      saveChanges()
+      return
+    }
+    saveChanges()
+    this.leftPanel.clickSelect()
+  }
+
+  /**
+   * @param {Event} e
+   * @returns {void} Resolves to `undefined`
+   */
+  cancelVisibilityDialogOverlays (e) {
+    if ($id('dialog_box') != null) $id('dialog_box').style.display = 'none'
+    const $editorDialog = $id('se-visibility-rules-dialog')
+    const editingsource = $editorDialog.getAttribute('dialog') === 'open'
+    if (!editingsource && !this.docprops && !this.configObj.preferences) {
+      if (this.curContext) {
+        this.svgCanvas.leaveContext()
+      }
+      return
+    }
+
+    if (editingsource) {
+      const origSource = this.svgCanvas.getSvgString()
+      if (origSource !== e.detail.value) {
+        const ok = seConfirm(
+          this.i18next.t('notification.QignoreSourceChanges')
+        )
+        if (ok) {
+          this.hideVisibilityDialog()
+        }
+      } else {
+        this.hideVisibilityDialog()
+      }
+    }
+  }
+
+
+
+
+    /**
+   * @returns {void}
+   */
+    toggleVisibilityDynamicOutput (e) {
+      this.configObj.curConfig.visibilityRules = e.detail.visibilityRules
+      this.svgCanvas.setConfig(this.configObj.curConfig)
+      const $editorDialog = document.getElementById('se-visibility-rules-dialog')
+      const origSource = this.svgCanvas.getSvgString()
+      $editorDialog.setAttribute('dialog', 'open')
+      $editorDialog.setAttribute('value', origSource)
+    }
 
   /**
    * @returns {void}

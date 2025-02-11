@@ -72,29 +72,28 @@
         </div>
         <fieldset id="svg_docprops_docprops">
             <legend id="svginfo_image_props"></legend>
-            <label>
+            <!-- <label>
                 <span id="svginfo_title"></span>
                 <input type="text" id="canvas_title" />
-            </label>
+            </label> -->
             <fieldset id="change_resolution">
                 <legend id="svginfo_dim"></legend>
                 <label>
                     <span id="svginfo_width"></span>
-                    <input type="text" id="canvas_width" size="6" />
+                    <input type="text" id="canvas_width" size="6" value="321" />
                 </label>
                 <label>
                     <span id="svginfo_height"></span>
-                    <input type="text" id="canvas_height" size="6" />
+                    <input type="text" id="canvas_height" size="6" value="204" />
                 </label>
                 <label>
                     <select id="resolution">
                         <option id="selectedPredefined" selected="selected"></option>
-                        <option>640x480</option>
-                        <option>800x600</option>
-                        <option>1024x768</option>
-                        <option>1280x960</option>
-                        <option>1600x1200</option>
-                        <option id="fitToContent" value="content"></option>
+                        <option value="321x204">321x204 (Horizontal)</option>
+                        <option value="204x321">204x321 (Vertical)</option>
+                        <option value="96mmx60mm">96mmx60mm (Horizontal)</option>
+                        <option value="60mmx96mm">60mmx96mm (Vertical)</option>
+                        <!-- <option id="fitToContent" value="content"></option> -->
                     </select>
                 </label>
             </fieldset>

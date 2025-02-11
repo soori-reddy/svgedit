@@ -31,8 +31,7 @@ export default {
             ['istanbul', {
               exclude: [
                 'editor/jquery.min.js',
-                'editor/jgraduate/**',
-                'editor/react-extensions/react-test'
+                'editor/jgraduate/**'
               ],
               include: [
                 'src/**',

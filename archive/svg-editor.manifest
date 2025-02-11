@@ -155,3 +155,14 @@ extensions/ext-star.js
 extensions/ext-storage.js
 extensions/ext-webappfind.js
 extensions/ext-xdomain-messaging.js
+extensions/ext-identitytext.js
+extensions/ext-identityassettext.js
+extensions/ext-assettext.js
+extensions/ext-visittext.js
+extensions/ext-visitortext.js
+extensions/ext-visitorsvisittext.js
+extensions/ext-dynamicphoto.js
+extensions/ext-imageimport.js
+extensions/ext-frontbackview.js
+extensions/ext-backgroundfit.js
+

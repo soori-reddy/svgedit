@@ -104,7 +104,6 @@ export default class ConfigObj {
       * @property {boolean} [showGrid=false] Set by `ext-grid.js`; determines whether or not to show the grid by default
       * @property {boolean} [show_outside_canvas=true] Defines whether or not elements outside the canvas should be visible. Set and used in `svgcanvas.js`.
       * @property {boolean} [selectNew=true] If true, will replace the selection with the current element and automatically select element objects (when not in "path" mode) after they are created, showing their grips (v2.6).
-      * @property {boolean} [layerView=false] Set for 'ext-layer_view.js'; determines whether or not only current layer is shown by default
       *   Set and used in `svgcanvas.js` (`mouseUp`).
      */
     this.defaultConfig = {
@@ -161,8 +160,7 @@ export default class ConfigObj {
       // EXTENSION (CLIENT VS. SERVER SAVING/OPENING)
       avoidClientSide: false, // Deprecated in favor of `avoidClientSideDownload`
       avoidClientSideDownload: false,
-      avoidClientSideOpen: false,
-      layerView: false
+      avoidClientSideOpen: false
     }
 
     this.curPrefs = {}
@@ -184,10 +182,14 @@ export default class ConfigObj {
       // 'ext-overview_window', disabled until we fix performance issue
       'ext-panning',
       'ext-shapes',
+      'ext-identitytext',
       'ext-polystar',
-      'ext-storage',
+      //'ext-storage',
       'ext-opensave',
-      'ext-layer_view'
+      'ext-dynamicphoto',
+      'ext-imageimport',
+      'ext-frontbackview',
+      'ext-backgroundfit'
     ]
     this.curConfig = {
       // We do not put on defaultConfig to simplify object copying
@@ -444,8 +446,8 @@ export default class ConfigObj {
           extendOrAdd(this.curConfig, key, val)
         } else if (cfgCfg.allowInitialUserOverride === true) {
           extendOrAdd(this.defaultConfig, key, val)
-        } else if (this.defaultConfig[key] && typeof this.defaultConfig[key] === 'object' && !Array.isArray(this.defaultConfig[key])) {
-          this.curConfig[key] = {}
+        } else if (this.defaultConfig[key] && typeof this.defaultConfig[key] === 'object') {
+          this.curConfig[key] = Array.isArray(this.defaultConfig[key]) ? [] : {}
           this.curConfig[key] = mergeDeep(this.curConfig[key], val)
         } else {
           this.curConfig[key] = val

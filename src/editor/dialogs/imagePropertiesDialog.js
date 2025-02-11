@@ -22,7 +22,7 @@ export class SeImgPropDialog extends HTMLElement {
     this.$saveBtn = this._shadowRoot.querySelector('#tool_docprops_save')
     this.$cancelBtn = this._shadowRoot.querySelector('#tool_docprops_cancel')
     this.$resolution = this._shadowRoot.querySelector('#resolution')
-    this.$canvasTitle = this._shadowRoot.querySelector('#canvas_title')
+    // this.$canvasTitle = this._shadowRoot.querySelector('#canvas_title')
     this.$canvasWidth = this._shadowRoot.querySelector('#canvas_width')
     this.$canvasHeight = this._shadowRoot.querySelector('#canvas_height')
     this.$imageOptEmbed = this._shadowRoot.querySelector('#image_embed')
@@ -39,12 +39,12 @@ export class SeImgPropDialog extends HTMLElement {
     this.setAttribute('common-ok', i18next.t('common.ok'))
     this.setAttribute('common-cancel', i18next.t('common.cancel'))
     this.setAttribute('config-image_props', i18next.t('config.image_props'))
-    this.setAttribute('config-doc_title', i18next.t('config.doc_title'))
+    // this.setAttribute('config-doc_title', i18next.t('config.doc_title'))
     this.setAttribute('config-doc_dims', i18next.t('config.doc_dims'))
     this.setAttribute('common-width', i18next.t('common.width'))
     this.setAttribute('common-height', i18next.t('common.height'))
     this.setAttribute('config-select_predefined', i18next.t('config.select_predefined'))
-    this.setAttribute('tools-fit-to-content', i18next.t('tools.fitToContent'))
+    // this.setAttribute('tools-fit-to-content', i18next.t('tools.fitToContent'))
     this.setAttribute('config-included_images', i18next.t('config.included_images'))
     this.setAttribute('config-image_opt_embed', i18next.t('config.image_opt_embed'))
     this.setAttribute('config-image_opt_ref', i18next.t('config.image_opt_ref'))
@@ -56,7 +56,7 @@ export class SeImgPropDialog extends HTMLElement {
    */
   static get observedAttributes () {
     return ['title', 'width', 'height', 'save', 'dialog', 'embed', 'common-ok',
-      'common-cancel', 'config-image_props', 'config-doc_title', 'config-doc_dims',
+      'common-cancel', 'config-image_props', 'config-doc_dims',
       'common-width', 'common-height', 'config-select_predefined',
       'tools-fit-to-content', 'config-included_images', 'config-image_opt_embed',
       'config-image_opt_ref']
@@ -73,9 +73,9 @@ export class SeImgPropDialog extends HTMLElement {
     if (oldValue === newValue) return
     let node
     switch (name) {
-      case 'title':
-        this.$canvasTitle.value = newValue
-        break
+      // case 'title':
+      //   this.$canvasTitle.value = newValue
+      //   break
       case 'width':
         if (newValue === 'fit') {
           this.$canvasWidth.removeAttribute('disabled')
@@ -134,10 +134,10 @@ export class SeImgPropDialog extends HTMLElement {
         node = this._shadowRoot.querySelector('#svginfo_image_props')
         node.textContent = newValue
         break
-      case 'config-doc_title':
-        node = this._shadowRoot.querySelector('#svginfo_title')
-        node.textContent = newValue
-        break
+      // case 'config-doc_title':
+      //   node = this._shadowRoot.querySelector('#svginfo_title')
+      //   node.textContent = newValue
+      //   break
       case 'config-doc_dims':
         node = this._shadowRoot.querySelector('#svginfo_dim')
         node.textContent = newValue
@@ -154,10 +154,10 @@ export class SeImgPropDialog extends HTMLElement {
         node = this._shadowRoot.querySelector('#selectedPredefined')
         node.textContent = newValue
         break
-      case 'tools-fit-to-content':
-        node = this._shadowRoot.querySelector('#fitToContent')
-        node.textContent = newValue
-        break
+      // case 'tools-fit-to-content':
+      //   node = this._shadowRoot.querySelector('#fitToContent')
+      //   node.textContent = newValue
+      //   break
       case 'config-included_images':
         node = this._shadowRoot.querySelector('#includedImages')
         node.textContent = newValue
@@ -320,7 +320,7 @@ export class SeImgPropDialog extends HTMLElement {
       }
       const closeEvent = new CustomEvent('change', {
         detail: {
-          title: this.$canvasTitle.value,
+          // title: this.$canvasTitle.value,
           w: this.$canvasWidth.value,
           h: this.$canvasHeight.value,
           save: saveOpt,
